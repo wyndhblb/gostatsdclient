@@ -5,7 +5,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
-	"statsd/event"
+	"github.com/wyndhblb/gostatsdclient/event"
 	"strings"
 	"time"
 )

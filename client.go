@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"statsd/event"
+    "github.com/wyndhblb/gostatsdclient/event"
 	"sync"
 	"net/url"
 )

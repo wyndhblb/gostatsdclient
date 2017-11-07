@@ -39,7 +39,7 @@ type StatsdClient struct {
 	BufSize         int
 	buffer          []byte
 	bufLock         sync.RWMutex
-	flushTick       time.Duration
+	FlushTick       time.Duration
 	randChan	    chan float32
 	stopChan        chan bool
 	stopDoneChan    chan bool
@@ -77,7 +77,7 @@ func NewStatsdClient(addr string, prefix string, prefhost string) *StatsdClient 
 		Logger:          log.New(os.Stdout, "[StatsdClient] ", log.Ldate|log.Ltime),
 		SampleRate:      1.0,
 		TimerSampleRate: 1.0,
-		flushTick:       time.Duration(time.Second),
+		FlushTick:       time.Duration(time.Second),
 		BufSize:         0,
 		randChan:        make(chan float32, 2056),
 		stopChan:        make(chan bool),
@@ -310,7 +310,7 @@ func (c *StatsdClient) send(stat string, format string, value interface{}) error
 }
 
 func (c *StatsdClient) periodicSend() {
-	tick := time.NewTicker(c.flushTick)
+	tick := time.NewTicker(c.FlushTick)
 	for {
 		select {
 			case <-tick.C:
